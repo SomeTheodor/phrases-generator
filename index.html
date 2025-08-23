@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Razones por las que te amo ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -21,7 +22,7 @@
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: #fff;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
       margin-bottom: 20px;
@@ -40,6 +41,7 @@
       font-weight: 600;
       box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
       transition: all 0.3s ease-in-out;
+      display: inline-block;
     }
 
     button:hover, a:hover {
@@ -53,11 +55,13 @@
       font-size: 20px;
       font-style: italic;
       max-width: 500px;
+      width: 90%;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 20px;
       box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
       color: #333;
+      word-wrap: break-word;
     }
 
     #mensaje {
@@ -72,10 +76,26 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* 📱 Ajustes para pantallas chicas */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      button, a {
+        width: 90%;
+        font-size: 15px;
+        padding: 12px;
+      }
+      #frase {
+        font-size: 18px;
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>❤️ Razones por las que te amo ❤️</h1>
+  <h1>❤️ Las mil razones de mi amor ❤️</h1>
   <button onclick="mostrarFrase()">Dime una razón</button>
   <a href="coleccion.html">Ver colección</a>
   <p id="frase"></p>
@@ -139,5 +159,8 @@
   </script>
 </body>
 </html>
+
+
+
 
 
