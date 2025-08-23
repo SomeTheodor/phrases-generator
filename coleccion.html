@@ -2,54 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colección ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb, #fad0c4);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
       padding: 20px;
+      margin: 0;
     }
+
     h1 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
       margin-bottom: 20px;
+      text-align: center;
     }
+
     a {
-      margin-bottom: 20px;
-      padding: 10px 18px;
+      margin-bottom: 25px;
+      padding: 12px 20px;
       background: #6c5ce7;
       color: white;
       text-decoration: none;
-      border-radius: 10px;
+      border-radius: 25px;
+      font-weight: 600;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease-in-out;
     }
     a:hover {
       background: #341f97;
+      transform: scale(1.05);
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.3);
     }
 
     /* Contenedor en grid */
     #lista {
       display: grid;
-      gap: 15px;
-      max-width: 900px;
+      gap: 20px;
+      max-width: 1000px;
       width: 100%;
       padding: 0;
       margin: 0;
     }
 
     .frase {
-      background: rgba(255,255,255,0.8);
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       text-align: center;
       font-size: 18px;
+      color: #333;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
+    .frase:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
     .fecha {
-      font-size: 12px;
-      color: #555;
-      margin-top: 8px;
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
     }
 
     @media (min-width: 768px) {
@@ -62,12 +86,25 @@
       #lista {
         grid-template-columns: 1fr;
       }
+      h1 {
+        font-size: 1.6rem;
+      }
+      .frase {
+        font-size: 16px;
+        padding: 15px;
+      }
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
 <body>
-  <h1>❤️ Tu colección de frases ❤️</h1>
-  <a href="index.html">Volver</a>
+  <h1>❤️ Tus frases ❤️</h1>
+  <a href="index.html">⬅ Volver</a>
   <div id="lista"></div>
 
   <script>
@@ -75,15 +112,17 @@
     const coleccionadas = JSON.parse(localStorage.getItem("coleccion")) || [];
 
     if (coleccionadas.length === 0) {
-      lista.innerHTML = "<p>No hay frases todavía 😢</p>";
+      lista.innerHTML = "<p style='color:white; font-size:18px; text-align:center;'>No hay frases todavía 😢</p>";
     } else {
       coleccionadas.forEach(item => {
         const div = document.createElement("div");
         div.className = "frase";
-        div.innerHTML = `<p>${item.texto}</p><div class="fecha">📅 ${item.fecha}</div>`;
+        div.innerHTML = `<p>💖 ${item.texto}</p><div class="fecha">📅 ${item.fecha}</div>`;
         lista.appendChild(div);
       });
     }
   </script>
 </body>
 </html>
+
+
