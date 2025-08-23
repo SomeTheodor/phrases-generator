@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Colección ❤️</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    a {
+      margin-bottom: 20px;
+      padding: 10px 18px;
+      background: #6c5ce7;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+    a:hover {
+      background: #341f97;
+    }
+
+    /* Contenedor en grid */
+    #lista {
+      display: grid;
+      gap: 15px;
+      max-width: 900px;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .frase {
+      background: rgba(255,255,255,0.8);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 18px;
+    }
+    .fecha {
+      font-size: 12px;
+      color: #555;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 768px) {
+      #lista {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      #lista {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>❤️ Tu colección de frases ❤️</h1>
+  <a href="index.html">Volver</a>
+  <div id="lista"></div>
+
+  <script>
+    const lista = document.getElementById("lista");
+    const coleccionadas = JSON.parse(localStorage.getItem("coleccion")) || [];
+
+    if (coleccionadas.length === 0) {
+      lista.innerHTML = "<p>No hay frases todavía 😢</p>";
+    } else {
+      coleccionadas.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "frase";
+        div.innerHTML = `<p>${item.texto}</p><div class="fecha">📅 ${item.fecha}</div>`;
+        lista.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
